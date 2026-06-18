@@ -47,7 +47,6 @@ body{
   background:var(--void);
   color:var(--txt);
   overflow-x:hidden;
-  cursor:none;
 }
 ::selection{background:var(--c1);color:#000}
 a{text-decoration:none;color:inherit}
@@ -69,28 +68,6 @@ body::before{
   opacity:.025;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:180px;
-}
-
-/* ══════════════════════════════════════════════════
-   CUSTOM CURSOR
-══════════════════════════════════════════════════ */
-#c-dot{
-  position:fixed;top:0;left:0;z-index:9999;
-  width:7px;height:7px;border-radius:50%;
-  background:var(--c1);
-  box-shadow:0 0 10px var(--c1);
-  transform:translate(-50%,-50%);
-  pointer-events:none;
-  transition:transform .08s,background .2s;
-}
-#c-ring{
-  position:fixed;top:0;left:0;z-index:9998;
-  width:34px;height:34px;border-radius:50%;
-  border:1.5px solid rgba(0,210,255,.5);
-  transform:translate(-50%,-50%);
-  pointer-events:none;
-  transition:width .25s var(--ease-expo),height .25s var(--ease-expo),
-             border-color .25s,opacity .25s;
 }
 
 /* ══════════════════════════════════════════════════
@@ -514,6 +491,8 @@ nav.scrolled{
   border:1px solid rgba(0,210,255,.28);color:var(--c1)}
 .av-jb{background:linear-gradient(135deg,rgba(124,58,237,.18),rgba(124,58,237,.04));
   border:1px solid rgba(124,58,237,.28);color:var(--c3)}
+.av-xb{background:linear-gradient(135deg,rgba(0,255,157,.18),rgba(0,255,157,.04));
+  border:1px solid rgba(0,255,157,.28);color:var(--c4)}
 .c-name{font-family:var(--f-head);font-size:.95rem;font-weight:700;color:var(--txt)}
 .c-role{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--txt3);margin-top:.15rem}
 .c-flag{font-size:.85rem;margin-top:.1rem}
@@ -747,8 +726,6 @@ footer{
 <body>
 <canvas id="circuit-canvas"></canvas>
 <div id="spbar"></div>
-<div id="c-dot"></div>
-<div id="c-ring"></div>
 
 <!-- LOADER -->
 <div id="loader">
@@ -889,7 +866,7 @@ footer{
           "We don't just write code — we architect business intelligence."
         </div>
         <p class="ab-p rv d2" data-i18n="about.p1">
-          Blasco Technologies was founded by two Systems Engineering students at Universidad
+          Blasco Technologies was founded by three Systems Engineering students at Universidad
           Metropolitana (UNIMET, Venezuela) with a shared obsession: making technology work for
           people, not the other way around. We combine deep engineering fundamentals with real
           business acumen.
@@ -951,7 +928,27 @@ footer{
             <span class="cert cibm">🎮 Game Dev Certified</span>
           </div>
         </div>
-        <div class="unimet-row rv d4">
+        <div class="t-card rv d4">
+          <div class="shimmer"></div>
+          <div class="ct">
+            <div class="avatar av-xb">AR</div>
+            <div>
+              <div class="c-name">Antonella Ruiz</div>
+              <div class="c-role" data-i18n="team.ar.role">Co-Founder · Systems &amp; Security Engineer</div>
+              <div class="c-flag">🇻🇪 Venezuela · B2 English</div>
+            </div>
+          </div>
+          <div class="chip-row">
+            <span class="chip">IT Audit</span><span class="chip">Security Audits</span>
+            <span class="chip">Risk Mgmt</span><span class="chip">Compliance</span>
+            <span class="chip">SQL</span><span class="chip">Python</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert cibm">🏅 IBM Cybersecurity</span>
+            <span class="cert cibm">🛡️ Telco Security (Movistar)</span>
+          </div>
+        </div>
+        <div class="unimet-row rv d5">
           <span style="font-size:1.3rem">🏛️</span>
           <div>
             <div class="un">Universidad Metropolitana — UNIMET</div>
@@ -1159,7 +1156,7 @@ footer{
 
 <!-- FOOTER -->
 <footer>
-  <div class="ft-l">© 2025 Blasco Technologies — Roger Balan &amp; Juan Blanco · UNIMET</div>
+  <div class="ft-l">© 2025 Blasco Technologies — Roger Balan, Juan Blanco &amp; Antonella Ruiz · UNIMET</div>
   <div class="ft-r"><a href="#">Blasco Technologies ↗</a></div>
 </footer>
 
@@ -1186,12 +1183,13 @@ const T = {
     "about.lbl":"Our Agency",
     "about.h1":"Engineering precision","about.h2":"meets","about.h3":" AI ambition.",
     "about.quote":'"We don\'t just write code — we architect business intelligence."',
-    "about.p1":"Blasco Technologies was founded by two Systems Engineering students at Universidad Metropolitana (UNIMET, Venezuela) with a shared obsession: making technology work for people, not the other way around. We combine deep engineering fundamentals with real business acumen.",
+    "about.p1":"Blasco Technologies was founded by three Systems Engineering students at Universidad Metropolitana (UNIMET, Venezuela) with a shared obsession: making technology work for people, not the other way around. We combine deep engineering fundamentals with real business acumen.",
     "about.p2":"Our hybrid profile — spanning AI/ML, cloud infrastructure, product design and financial modeling — means we speak both the language of CTOs and CEOs. Whether it's deploying a WhatsApp sales bot or architecting a healthcare marketplace, we ship production-ready software.",
     "tag.b2b":"B2B Focus","tag.agile":"Agile Delivery","tag.ai":"AI-First",
     "tag.oop":"OOP Architecture","tag.cloud":"Cloud-Native","tag.fs":"Full-Stack",
     "team.rb.role":"Co-Founder · Full-Stack & AI Engineer",
     "team.jb.role":"Co-Founder · Systems Engineer & Strategist",
+    "team.ar.role":"Co-Founder · Systems & Security Engineer",
     "team.unimet":"Systems Engineering · Caracas, Venezuela",
     "proc.1.num":"01 — Discovery","proc.1.ttl":"Understand Your Business",
     "proc.1.dsc":"We map workflows, pain points, and automation opportunities in a strategic kickoff session.",
@@ -1251,12 +1249,13 @@ const T = {
     "about.lbl":"Nuestra Agencia",
     "about.h1":"Precisión en ingeniería","about.h2":"unida a la","about.h3":" ambición IA.",
     "about.quote":'"No solo escribimos código — arquitectamos inteligencia de negocio."',
-    "about.p1":"Blasco Technologies fue fundada por dos estudiantes de Ingeniería de Sistemas de la Universidad Metropolitana (UNIMET, Venezuela) con una obsesión compartida: hacer que la tecnología trabaje para las personas, no al revés. Combinamos fundamentos de ingeniería sólidos con visión empresarial real.",
+    "about.p1":"Blasco Technologies fue fundada por tres estudiantes de Ingeniería de Sistemas de la Universidad Metropolitana (UNIMET, Venezuela) con una obsesión compartida: hacer que la tecnología trabaje para las personas, no al revés. Combinamos fundamentos de ingeniería sólidos con visión empresarial real.",
     "about.p2":"Nuestro perfil híbrido — abarcando IA/ML, infraestructura cloud, diseño de producto y modelado financiero — nos permite hablar tanto el lenguaje de los CTO como el de los CEO. Ya sea desplegando un bot de ventas en WhatsApp o arquitectando un marketplace de salud, entregamos software listo para producción.",
     "tag.b2b":"Enfoque B2B","tag.agile":"Entrega Ágil","tag.ai":"IA Primero",
     "tag.oop":"Arquitectura OOP","tag.cloud":"Cloud-Nativo","tag.fs":"Full-Stack",
     "team.rb.role":"Co-Fundador · Ing. Full-Stack & IA",
     "team.jb.role":"Co-Fundador · Ing. de Sistemas & Estrategia",
+    "team.ar.role":"Co-Fundadora · Ing. de Sistemas & Seguridad",
     "team.unimet":"Ingeniería de Sistemas · Caracas, Venezuela",
     "proc.1.num":"01 — Descubrimiento","proc.1.ttl":"Entender tu Negocio",
     "proc.1.dsc":"Mapeamos flujos de trabajo, puntos de dolor y oportunidades de automatización en una sesión estratégica inicial.",
@@ -1323,34 +1322,6 @@ function setLang(lang){
 ══════════════════════════════════════════ */
 window.addEventListener('load',()=>{
   setTimeout(()=>document.getElementById('loader').classList.add('out'),1600);
-});
-
-/* ══════════════════════════════════════════
-   CURSOR
-══════════════════════════════════════════ */
-const dot=document.getElementById('c-dot');
-const ring=document.getElementById('c-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  dot.style.left=mx+'px';dot.style.top=my+'px';
-});
-(function animRing(){
-  rx+=(mx-rx)*.11;ry+=(my-ry)*.11;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-})();
-document.querySelectorAll('a,button,.t-card,.p-card,.svc-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{
-    ring.style.width='50px';ring.style.height='50px';
-    ring.style.borderColor='var(--c1)';
-    dot.style.transform='translate(-50%,-50%) scale(.35)';
-  });
-  el.addEventListener('mouseleave',()=>{
-    ring.style.width='34px';ring.style.height='34px';
-    ring.style.borderColor='rgba(0,210,255,.5)';
-    dot.style.transform='translate(-50%,-50%) scale(1)';
-  });
 });
 
 /* ══════════════════════════════════════════
@@ -1470,14 +1441,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 ══════════════════════════════════════════ */
 const secs=document.querySelectorAll('section[id]');
 const nls=document.querySelectorAll('.nav-links a');
-new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const id=e.target.id;
-      nls.forEach(l=>l.style.color=l.getAttribute('href')==='#'+id?'var(--c1)':'');
-    }
-  });
-},{threshold:.45}).observe?nls:null;
 secs.forEach(s=>new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
